@@ -62,12 +62,12 @@ const i18n = {
     footerText:   '© 2024 Lily of the Valley · ',
     footerLink:   'lilyofthevalley.com',
     maisons: {
-      all:          'Toutes les maisons',
+      label:        'Maisons',
       'saint-tropez': 'Saint-Tropez',
       courchevel:   'Courchevel',
     },
     services: {
-      all:          'Tous les services',
+      label:        'Services',
       bar:          'Bar',
       cuisine:      'Cuisine',
       'front-office': 'Front Office',
@@ -88,12 +88,12 @@ const i18n = {
     footerText:   '© 2024 Lily of the Valley · ',
     footerLink:   'lilyofthevalley.com',
     maisons: {
-      all:          'All properties',
+      label:        'Properties',
       'saint-tropez': 'Saint-Tropez',
       courchevel:   'Courchevel',
     },
     services: {
-      all:          'All departments',
+      label:        'Departments',
       bar:          'Bar',
       cuisine:      'Kitchen',
       'front-office': 'Front Office',
@@ -153,10 +153,10 @@ function rebuildSelects() {
 
   // Maison
   els.selMaison.innerHTML = '';
-  [['all','saint-tropez','courchevel']].flat().forEach(val => {
+  ['all','saint-tropez','courchevel'].forEach(val => {
     const opt = document.createElement('option');
     opt.value = val;
-    opt.textContent = t.maisons[val];
+    opt.textContent = val === 'all' ? t.maisons.label : t.maisons[val];
     if (val === activeMaison) opt.selected = true;
     els.selMaison.appendChild(opt);
   });
@@ -166,7 +166,7 @@ function rebuildSelects() {
   ['all','bar','cuisine','front-office','housekeeping','salle'].forEach(val => {
     const opt = document.createElement('option');
     opt.value = val;
-    opt.textContent = t.services[val];
+    opt.textContent = val === 'all' ? t.services.label : t.services[val];
     if (val === activeService) opt.selected = true;
     els.selService.appendChild(opt);
   });
