@@ -166,33 +166,47 @@ ul { list-style: none; }
 }
 
 /* ── Filters ───────────────────────────────────────────────── */
-.filters {
+.filters-bar {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+  gap: 16px;
   margin-bottom: 40px;
+  flex-wrap: wrap;
 }
 
-.filter-btn {
+.select-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.filter-select {
   font-family: 'Montserrat', sans-serif;
   font-size: 11px;
   font-weight: 600;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
-  padding: 8px 18px;
-  border: 1px solid var(--border);
+  color: var(--noir);
   background: var(--blanc);
-  color: var(--gris);
-  cursor: pointer;
+  border: 1px solid var(--border);
   border-radius: 2px;
-  transition: all .2s;
+  padding: 10px 40px 10px 16px;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  outline: none;
+  transition: border-color .2s;
+  min-width: 200px;
 }
 
-.filter-btn.active,
-.filter-btn:hover {
+.filter-select:focus,
+.filter-select:hover {
   border-color: var(--laiton);
-  color: var(--laiton);
-  background: rgba(189,87,40,.04);
+}
+
+.select-arrow {
+  position: absolute;
+  right: 14px;
+  pointer-events: none;
 }
 
 /* ── Job grid ──────────────────────────────────────────────── */

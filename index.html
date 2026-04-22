@@ -47,7 +47,16 @@
     </div>
 
     <!-- Filters -->
-    <div class="filters" id="filters" role="group" aria-label="Filtrer par département"></div>
+    <div class="filters-bar">
+      <div class="select-wrap">
+        <select class="filter-select" id="sel-maison" aria-label="Filtrer par maison"></select>
+        <svg class="select-arrow" width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="#bd5728" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="select-wrap">
+        <select class="filter-select" id="sel-service" aria-label="Filtrer par service"></select>
+        <svg class="select-arrow" width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="#bd5728" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+    </div>
 
     <!-- Job listings -->
     <div class="jobs-grid" id="jobs-grid" role="list">
