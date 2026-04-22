@@ -4,47 +4,44 @@
 
 const COMPANY_KEY = '2kea8pXwEO9N1o0B';
 const API_TOKEN   = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzQ4MCwiaWF0IjoxNzc2ODYxMTI1LCJleHAiOjE4MDgzOTcxMjV9.IJU2gvbquqY9sh4fLlriSx5Dee4WWOHLzEYzV0OgsHs';
-const API_URL     = `https://api.flatchr.io/company/${COMPANY_KEY}/vacancies`;
+const API_URL     = `https://api.flatchr.io/company/${COMPANY_KEY}/vacancies?fields=metier`;
 
-/* ── Keyword rules (title-based, since Flatchr fields are null) ── */
+/* ── Metier → Service mapping (based on Flatchr metier_id) ── */
+const METIER_SERVICE = {
+  95:  'bar',           // Barman
+  92:  'cuisine',       // Commis de Cuisine
+  96:  'cuisine',       // Cuisinier
+  99:  'cuisine',       // Pâtissier
+  40:  'front-office',  // Chargé de clientèle
+  101: 'front-office',  // Concierge
+  126: 'front-office',  // Hôtes & Hôtesses
+  134: 'front-office',  // Chauffeur / Coursier / Livreur
+  86:  'housekeeping',  // Technicien maintenance / d'exploitation
+  90:  'housekeeping',  // Ouvrier
+  93:  'housekeeping',  // Responsable & Agent Qualité
+  103: 'housekeeping',  // Homme/Femme de chambre
+  91:  'salle',         // Serveur
+  94:  'salle',         // Maître d'hôtel
+  97:  'salle',         // Chef de rang
+  98:  'salle',         // Directeur de restaurant
+  100: 'salle',         // Responsable évènementiel
+};
+
+/* ── Maison matching (title keywords, no Flatchr field available) ── */
 const MAISON_KEYWORDS = {
-  courchevel:    ['courchevel', 'chalet'],
-  // saint-tropez = default (tout ce qui ne matche pas courchevel)
+  courchevel: ['courchevel', 'chalet'],
 };
-
-const SERVICE_KEYWORDS = {
-  bar:          ['barman', 'barmaid', 'sommelier'],
-  cuisine:      ['chef de partie', 'demi-chef', 'sous-chef', 'commis de cuisine',
-                 'commis pâtisserie', 'chef pâtissier', 'pâtisserie', 'pâtissier',
-                 'pizzaiolo', 'economat', 'économat', 'cuisine'],
-  'front-office': ['réceptionniste', 'réservation', 'hôtesse', 'voiturier',
-                   'bagagiste', 'concierge', 'agent de réservation'],
-  housekeeping: ['gouvernant', 'femme de chambre', 'valet de chambre',
-                 'lingère', 'lingere', 'linger', 'lingerie',
-                 'maintenance des logements'],
-  salle:        ['chef de rang', 'commis de salle', 'majordome', 'room service',
-                 'equipier', 'équipier', 'vivier salle'],
-};
-
-function matchesKeywords(title, keywords) {
-  const t = title.toLowerCase();
-  return keywords.some(kw => t.includes(kw.toLowerCase()));
-}
 
 function getMaison(job) {
-  const t = job.title || '';
+  const t = (job.title || '').toLowerCase();
   for (const [maison, kws] of Object.entries(MAISON_KEYWORDS)) {
-    if (matchesKeywords(t, kws)) return maison;
+    if (kws.some(kw => t.includes(kw))) return maison;
   }
-  return 'saint-tropez'; // default
+  return 'saint-tropez';
 }
 
 function getService(job) {
-  const t = job.title || '';
-  for (const [svc, kws] of Object.entries(SERVICE_KEYWORDS)) {
-    if (matchesKeywords(t, kws)) return svc;
-  }
-  return 'other';
+  return METIER_SERVICE[job.metier_id] || 'other';
 }
 
 /* ── i18n ──────────────────────────────────────────────────── */
