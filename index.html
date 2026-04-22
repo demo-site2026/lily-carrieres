@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Carrières — Lily of the Valley</title>
+  <meta name="description" content="Rejoignez l'équipe Lily of the Valley. Découvrez nos offres d'emploi dans un hôtel 5* sur la Côte d'Azur.">
+  <meta name="theme-color" content="#fff7e6">
+
+  <!-- Favicon (shared with main site) -->
+  <link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ── Header ──────────────────────────────────────────── -->
+  <header class="header">
+    <div class="header-inner">
+      <a class="header-logo" href="https://www.lilyofthevalley.com" target="_blank" rel="noopener" aria-label="Lily of the Valley">
+        <img src="images/LOTV_logo_laiton.svg" alt="Lily of the Valley" height="36">
+      </a>
+      <div class="header-right">
+        <div class="lang-switcher" role="group" aria-label="Langue / Language">
+          <button class="lang-btn active" id="btn-fr" aria-label="Français">FR</button>
+          <button class="lang-btn" id="btn-en" aria-label="English">EN</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── Hero ────────────────────────────────────────────── -->
+  <section class="hero">
+    <p class="hero-eyebrow" id="hero-eyebrow">Lily of the Valley · Var, France</p>
+    <h1 class="hero-title" id="hero-title">Rejoignez&nbsp;notre&nbsp;équipe</h1>
+    <p class="hero-subtitle" id="hero-subtitle">
+      Nous recrutons des talents passionnés pour offrir à nos hôtes une expérience unique au cœur de la Côte d'Azur.
+    </p>
+  </section>
+
+  <!-- ── Main ────────────────────────────────────────────── -->
+  <main class="main">
+
+    <div class="section-header">
+      <h2 class="section-title" id="section-title">Nos offres d'emploi</h2>
+      <span class="job-count" id="job-count"></span>
+    </div>
+
+    <!-- Filters -->
+    <div class="filters" id="filters" role="group" aria-label="Filtrer par département"></div>
+
+    <!-- Job listings -->
+    <div class="jobs-grid" id="jobs-grid" role="list">
+      <div class="state-loading">
+        <div class="spinner"></div>
+        <p>Chargement des offres…</p>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ── Footer ──────────────────────────────────────────── -->
+  <footer class="footer">
+    <img class="footer-logo" src="images/LOTV_logo_laiton.svg" alt="Lily of the Valley" height="28">
+    <p class="footer-text">
+      <span id="footer-text">© 2024 Lily of the Valley · </span><a class="footer-link" id="footer-link" href="https://www.lilyofthevalley.com" target="_blank" rel="noopener">lilyofthevalley.com</a>
+    </p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

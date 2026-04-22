@@ -1,0 +1,339 @@
+/* ============================================================
+   Lily of the Valley — Carrières / Careers
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,900;1,300&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+/* ── Variables ─────────────────────────────────────────────── */
+:root {
+  --laiton:   #bd5728;
+  --creme:    #fff7e6;
+  --blanc:    #ffffff;
+  --noir:     #1a1a1a;
+  --gris:     #666666;
+  --gris-clair: #f2ede6;
+  --border:   rgba(189,87,40,.2);
+}
+
+/* ── Reset ─────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  background: var(--creme);
+  color: var(--noir);
+  line-height: 1.7;
+}
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+ul { list-style: none; }
+
+/* ── Header ────────────────────────────────────────────────── */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--blanc);
+  border-bottom: 1px solid var(--border);
+  height: 72px;
+  display: flex;
+  align-items: center;
+}
+
+.header-inner {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-logo img {
+  height: 36px;
+  width: auto;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+/* Language switcher */
+.lang-switcher {
+  display: flex;
+  gap: 4px;
+}
+
+.lang-btn {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--gris);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 2px;
+  transition: color .2s, background .2s;
+  text-transform: uppercase;
+}
+
+.lang-btn.active {
+  color: var(--laiton);
+  background: rgba(189,87,40,.08);
+}
+
+.lang-btn:hover:not(.active) {
+  color: var(--noir);
+}
+
+/* ── Hero ──────────────────────────────────────────────────── */
+.hero {
+  background: var(--blanc);
+  border-bottom: 1px solid var(--border);
+  padding: 80px 32px 72px;
+  text-align: center;
+}
+
+.hero-eyebrow {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--laiton);
+  margin-bottom: 20px;
+}
+
+.hero-title {
+  font-family: 'Merriweather', serif;
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 900;
+  line-height: 1.15;
+  color: var(--noir);
+  margin-bottom: 24px;
+  letter-spacing: -0.5px;
+}
+
+.hero-subtitle {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--gris);
+  max-width: 560px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* ── Main content ──────────────────────────────────────────── */
+.main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 56px 32px 80px;
+}
+
+/* ── Section header ────────────────────────────────────────── */
+.section-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 36px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.section-title {
+  font-family: 'Merriweather', serif;
+  font-size: 22px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--noir);
+}
+
+.job-count {
+  font-size: 12px;
+  color: var(--gris);
+  font-weight: 500;
+  letter-spacing: .5px;
+}
+
+/* ── Filters ───────────────────────────────────────────────── */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 40px;
+}
+
+.filter-btn {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 8px 18px;
+  border: 1px solid var(--border);
+  background: var(--blanc);
+  color: var(--gris);
+  cursor: pointer;
+  border-radius: 2px;
+  transition: all .2s;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+  border-color: var(--laiton);
+  color: var(--laiton);
+  background: rgba(189,87,40,.04);
+}
+
+/* ── Job grid ──────────────────────────────────────────────── */
+.jobs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+
+.job-card {
+  background: var(--blanc);
+  padding: 32px 28px;
+  cursor: pointer;
+  transition: background .2s;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.job-card:hover {
+  background: var(--gris-clair);
+}
+
+.job-card-dept {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--laiton);
+}
+
+.job-card-title {
+  font-family: 'Merriweather', serif;
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--noir);
+  line-height: 1.4;
+}
+
+.job-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.job-meta-tag {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--gris);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.job-meta-tag svg {
+  flex-shrink: 0;
+}
+
+.job-card-arrow {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--laiton);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: gap .2s;
+}
+
+.job-card:hover .job-card-arrow {
+  gap: 14px;
+}
+
+/* ── Loading / empty states ────────────────────────────────── */
+.state-loading,
+.state-empty,
+.state-error {
+  grid-column: 1 / -1;
+  padding: 80px 32px;
+  text-align: center;
+  background: var(--blanc);
+}
+
+.state-loading .spinner {
+  width: 32px;
+  height: 32px;
+  border: 2px solid var(--border);
+  border-top-color: var(--laiton);
+  border-radius: 50%;
+  animation: spin .8s linear infinite;
+  margin: 0 auto 16px;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.state-loading p,
+.state-empty p,
+.state-error p {
+  font-size: 13px;
+  color: var(--gris);
+}
+
+/* ── Footer ────────────────────────────────────────────────── */
+.footer {
+  background: var(--blanc);
+  border-top: 1px solid var(--border);
+  padding: 40px 32px;
+  text-align: center;
+}
+
+.footer-logo {
+  margin: 0 auto 16px;
+  height: 28px;
+  width: auto;
+  opacity: .7;
+}
+
+.footer-text {
+  font-size: 11px;
+  color: var(--gris);
+  letter-spacing: .5px;
+}
+
+.footer-link {
+  color: var(--laiton);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ── Responsive ────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .hero { padding: 56px 20px 48px; }
+  .main { padding: 40px 20px 60px; }
+  .header-inner { padding: 0 20px; }
+  .jobs-grid { grid-template-columns: 1fr; }
+  .section-header { flex-direction: column; gap: 4px; }
+}
