@@ -4,6 +4,7 @@
    ============================================================ */
 
 const COMPANY_KEY = '2kea8pXwEO9N1o0B';
+const API_TOKEN  = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzQ4MCwiaWF0IjoxNzc2ODYxMTI1LCJleHAiOjE4MDgzOTcxMjV9.IJU2gvbquqY9sh4fLlriSx5Dee4WWOHLzEYzV0OgsHs';
 const API_URL = `https://api.flatchr.io/company/${COMPANY_KEY}/vacancies`;
 
 /* ── i18n strings ──────────────────────────────────────────── */
@@ -87,11 +88,9 @@ function setLang(lang) {
 async function fetchJobs() {
   showLoading();
   try {
-    // Try without token first (public endpoint), then with token
-    let res = await fetch(API_URL);
-    if (!res.ok) {
-      res = await fetch(`${API_URL}?token=${COMPANY_KEY}`);
-    }
+    const res = await fetch(API_URL, {
+      headers: { 'Authorization': `Bearer ${API_TOKEN}` }
+    });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
     allJobs = Array.isArray(data) ? data : (data.vacancies || data.data || []);
