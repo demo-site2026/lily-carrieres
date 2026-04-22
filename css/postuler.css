@@ -1,0 +1,231 @@
+/* ============================================================
+   postuler.css — Application form page
+   ============================================================ */
+
+/* ── Apply hero ────────────────────────────────────────────── */
+.apply-hero {
+  background: var(--blanc);
+  border-bottom: 1px solid var(--border);
+  padding: 56px 32px 48px;
+}
+
+.apply-hero-inner {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--laiton);
+  margin-bottom: 24px;
+  transition: gap .2s;
+}
+.back-link:hover { gap: 10px; }
+
+/* ── Apply main ────────────────────────────────────────────── */
+.apply-main {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 56px 32px 80px;
+}
+
+/* ── Form layout ───────────────────────────────────────────── */
+.apply-form {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--noir);
+}
+
+.required { color: var(--laiton); }
+
+.form-input {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  padding: 12px 16px;
+  border: 1px solid var(--border);
+  background: var(--blanc);
+  color: var(--noir);
+  border-radius: 2px;
+  outline: none;
+  transition: border-color .2s;
+  width: 100%;
+}
+
+.form-input:focus {
+  border-color: var(--laiton);
+}
+
+.form-input.error {
+  border-color: #c0392b;
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* ── File drop ─────────────────────────────────────────────── */
+.file-drop {
+  border: 1px dashed var(--border);
+  background: var(--creme);
+  padding: 28px 20px;
+  text-align: center;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: border-color .2s, background .2s;
+}
+
+.file-drop:hover,
+.file-drop.dragover {
+  border-color: var(--laiton);
+  background: rgba(189,87,40,.04);
+}
+
+.file-drop-text {
+  font-size: 13px;
+  color: var(--gris);
+  margin-top: 10px;
+}
+
+.file-browse {
+  color: var(--laiton);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.file-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--laiton);
+  margin-top: 6px;
+  min-height: 16px;
+}
+
+/* ── Consent ───────────────────────────────────────────────── */
+.form-consent { padding-top: 4px; }
+
+.checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--gris);
+  line-height: 1.6;
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  accent-color: var(--laiton);
+  margin-top: 2px;
+  cursor: pointer;
+}
+
+/* ── Errors ────────────────────────────────────────────────── */
+.field-error {
+  font-size: 11px;
+  color: #c0392b;
+  min-height: 14px;
+}
+
+/* ── Submit button ─────────────────────────────────────────── */
+.form-actions { padding-top: 8px; }
+
+.btn-submit {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 16px 40px;
+  background: var(--laiton);
+  color: var(--blanc);
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: opacity .2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.btn-submit:hover { opacity: .85; }
+.btn-submit:disabled { opacity: .5; cursor: not-allowed; }
+
+.btn-spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255,255,255,.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin .7s linear infinite;
+  display: inline-block;
+}
+
+/* ── Success / Error states ────────────────────────────────── */
+.apply-success {
+  text-align: center;
+  padding: 60px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.apply-success h2 {
+  font-family: 'Merriweather', serif;
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.apply-success p {
+  font-size: 14px;
+  color: var(--gris);
+  max-width: 420px;
+}
+
+.apply-error-msg {
+  background: #fdf0ee;
+  border: 1px solid #e8b4a8;
+  border-radius: 2px;
+  padding: 16px 20px;
+  font-size: 13px;
+  color: #c0392b;
+}
+
+/* ── Responsive ────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .apply-hero { padding: 40px 20px 36px; }
+  .apply-main { padding: 36px 20px 60px; }
+  .form-row { grid-template-columns: 1fr; }
+}

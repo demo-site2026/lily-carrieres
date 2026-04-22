@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Postuler — Lily of the Valley</title>
+  <meta name="theme-color" content="#fff7e6">
+  <link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/postuler.css">
+</head>
+<body>
+
+  <!-- ── Header ──────────────────────────────────────────── -->
+  <header class="header">
+    <div class="header-inner">
+      <a class="header-logo" href="index.html" aria-label="← Retour aux offres">
+        <img src="images/LOTV_logo_laiton.svg" alt="Lily of the Valley" height="36">
+      </a>
+      <div class="header-right">
+        <div class="lang-switcher" role="group" aria-label="Langue / Language">
+          <button class="lang-btn active" id="btn-fr">FR</button>
+          <button class="lang-btn" id="btn-en">EN</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── Job summary ─────────────────────────────────────── -->
+  <section class="apply-hero" id="apply-hero">
+    <div class="apply-hero-inner">
+      <a class="back-link" id="back-link" href="index.html">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3L5 8l5 5" stroke="#bd5728" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span id="back-label">Retour aux offres</span>
+      </a>
+      <p class="hero-eyebrow" id="job-dept"></p>
+      <h1 class="hero-title" id="job-title">…</h1>
+      <p class="hero-subtitle" id="job-meta"></p>
+    </div>
+  </section>
+
+  <!-- ── Form ────────────────────────────────────────────── -->
+  <main class="apply-main">
+    <form class="apply-form" id="apply-form" novalidate>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" for="firstname" id="lbl-firstname">Prénom <span class="required">*</span></label>
+          <input class="form-input" type="text" id="firstname" name="firstname" autocomplete="given-name" required>
+          <span class="field-error" id="err-firstname"></span>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="lastname" id="lbl-lastname">Nom <span class="required">*</span></label>
+          <input class="form-input" type="text" id="lastname" name="lastname" autocomplete="family-name" required>
+          <span class="field-error" id="err-lastname"></span>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" for="email" id="lbl-email">E-mail <span class="required">*</span></label>
+          <input class="form-input" type="email" id="email" name="email" autocomplete="email" required>
+          <span class="field-error" id="err-email"></span>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="phone" id="lbl-phone">Téléphone</label>
+          <input class="form-input" type="tel" id="phone" name="phone" autocomplete="tel">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="resume" id="lbl-resume">CV (PDF) <span class="required">*</span></label>
+        <div class="file-drop" id="file-drop">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 15V3m0 0L8 7m4-4l4 4" stroke="#bd5728" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" stroke="#bd5728" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <p class="file-drop-text" id="file-drop-text">Glissez votre CV ici ou <label class="file-browse" for="resume" id="lbl-browse">parcourir</label></p>
+          <p class="file-name" id="file-name"></p>
+          <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" style="display:none" required>
+        </div>
+        <span class="field-error" id="err-resume"></span>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="comment" id="lbl-comment">Lettre de motivation</label>
+        <textarea class="form-input form-textarea" id="comment" name="comment" rows="5"></textarea>
+      </div>
+
+      <div class="form-group form-consent">
+        <label class="checkbox-label">
+          <input type="checkbox" id="consent" name="consent" required>
+          <span class="checkmark"></span>
+          <span id="lbl-consent">J'accepte que mes données soient utilisées dans le cadre de ma candidature. <span class="required">*</span></span>
+        </label>
+        <span class="field-error" id="err-consent"></span>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn-submit" id="btn-submit">
+          <span id="btn-label">Envoyer ma candidature</span>
+          <span class="btn-spinner" id="btn-spinner" hidden></span>
+        </button>
+      </div>
+
+    </form>
+
+    <!-- Success / Error messages -->
+    <div class="apply-success" id="apply-success" hidden>
+      <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="19" stroke="#bd5728" stroke-width="1.5"/><path d="M12 20l6 6 10-12" stroke="#bd5728" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <h2 id="success-title">Candidature envoyée !</h2>
+      <p id="success-msg">Nous avons bien reçu votre dossier et reviendrons vers vous très prochainement.</p>
+      <a class="btn-submit" href="index.html" id="success-back" style="display:inline-block;text-align:center;margin-top:8px;">Voir d'autres offres</a>
+    </div>
+
+    <div class="apply-error-msg" id="apply-error-msg" hidden>
+      <p id="error-msg-text">Une erreur est survenue. Veuillez réessayer.</p>
+    </div>
+
+  </main>
+
+  <!-- ── Footer ──────────────────────────────────────────── -->
+  <footer class="footer">
+    <img class="footer-logo" src="images/LOTV_logo_laiton.svg" alt="Lily of the Valley" height="28">
+    <p class="footer-text">
+      <span id="footer-text">© 2024 Lily of the Valley · </span><a class="footer-link" href="https://www.lilyofthevalley.com" target="_blank" rel="noopener" id="footer-link">lilyofthevalley.com</a>
+    </p>
+  </footer>
+
+  <script src="js/postuler.js"></script>
+</body>
+</html>

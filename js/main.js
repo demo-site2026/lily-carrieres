@@ -166,13 +166,11 @@ function buildJobCard(job, t) {
   const dept        = job.activity || job.metier || job.department || '';
   const contract    = job.contract_type || job.contract_type_label || '';
   const city        = job.address?.city || job.city || 'Var, France';
-  const applyUrl    = job.apply_url || job.url || '#';
+  const applyUrl    = `postuler.html?vacancy=${encodeURIComponent(job.slug || job.id)}`;
 
   const card = document.createElement('a');
   card.className = 'job-card';
   card.href = applyUrl;
-  card.target = '_blank';
-  card.rel = 'noopener noreferrer';
 
   card.innerHTML = `
     ${dept ? `<div class="job-card-dept">${escHtml(dept)}</div>` : ''}
