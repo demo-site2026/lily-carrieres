@@ -18,6 +18,8 @@ const i18n = {
     lblPhone:     'Téléphone',
     lblResume:    'CV (PDF)',
     lblComment:   'Lettre de motivation',
+    lblMission:   'Missions',
+    lblProfile:   'Profil recherché',
     lblConsent:   'J\'accepte que mes données soient utilisées dans le cadre de ma candidature.',
     lblBrowse:    'parcourir',
     dropText:     'Glissez votre CV ici ou',
@@ -42,6 +44,8 @@ const i18n = {
     lblPhone:     'Phone',
     lblResume:    'CV (PDF)',
     lblComment:   'Cover letter',
+    lblMission:   'Missions',
+    lblProfile:   'Candidate profile',
     lblConsent:   'I agree to my data being used in the context of my application.',
     lblBrowse:    'browse',
     dropText:     'Drop your CV here or',
@@ -76,6 +80,8 @@ function setLang(lang) {
   $('btn-en').classList.toggle('active', lang === 'en');
 
   const t = i18n[lang];
+  $('lbl-mission').textContent = t.lblMission;
+  $('lbl-profile').textContent = t.lblProfile;
   $('back-link').querySelector('span').textContent = t.backLabel;
   $('lbl-firstname').childNodes[0].textContent     = t.lblFirstname + ' ';
   $('lbl-lastname').childNodes[0].textContent      = t.lblLastname + ' ';
@@ -114,6 +120,20 @@ async function loadJob(slug) {
     const city = job.address?.city || 'Var, France';
     parts.push(city);
     $('job-meta').textContent = parts.join(' · ');
+
+    // Description blocks
+    let hasDesc = false;
+    if (job.mission) {
+      $('job-mission').innerHTML = job.mission;
+      $('job-desc-mission').hidden = false;
+      hasDesc = true;
+    }
+    if (job.profile) {
+      $('job-profile').innerHTML = job.profile;
+      $('job-desc-profile').hidden = false;
+      hasDesc = true;
+    }
+    if (hasDesc) $('job-desc-section').hidden = false;
   } catch (e) {
     /* silent — form still works */
   }
